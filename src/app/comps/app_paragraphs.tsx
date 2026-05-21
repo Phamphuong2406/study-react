@@ -3,7 +3,7 @@ import { View, Text, Button } from "react-native";
 
 export const ThemeContext = createContext('light');
 
-export default function Paragraph () {
+export default function Paragraph() {
 
     const theme = useContext(ThemeContext);
 
@@ -16,8 +16,7 @@ export default function Paragraph () {
 
             <Text>
 
-                Lớp học React Native là một lớp học tuyệt vời, với những kiến
-                thức cực kỳ dễ học và trần đầy yêu thương
+                test cách sử dụng useContext    test cách sử dụng useContext    test cách sử dụng useContext
 
             </Text>
 

@@ -1,5 +1,6 @@
 import React, { createContext, memo, useCallback, useContext, useState } from "react";
-import { View, Text, StyleSheet, SafeAreaView, Button } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Paragraph, { ThemeContext } from "./comps/app_paragraphs";
 
 export default function Screen4() {
@@ -42,7 +43,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 50
     },
     textCount: {
         fontSize: 40

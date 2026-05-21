@@ -1,5 +1,6 @@
 import { memo, useCallback, useState } from "react";
-import { View, Text, StyleSheet, SafeAreaView, Button } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Screen3 () {
 

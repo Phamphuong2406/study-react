@@ -1,4 +1,5 @@
-import { StyleSheet, Image, Platform, View, Text, Button, SafeAreaView } from 'react-native';
+import { StyleSheet, Image, Platform, View, Text, Button } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import React, { memo, useState } from 'react';
 
@@ -25,15 +26,15 @@ export default function TabTwoScreen() {
         <Button title="Tăng state 1" onPress={handleIncrease} />
         <View style={styles.seperate} />
         <Button title="Tăng state 2" onPress={handleIncrease2} />
-        <Content count={count} />
+        <Content count2={count2} />
       </View>
 
     </SafeAreaView>
 
   );
 }
-export const Content = memo(({ count } = {}) => {
-  console.log('re-render in Content, count =  ', count);
+export const Content = memo(({ count2 } = {}) => {
+  console.log('re-render in Content, count =  ', count2);
   return (
     <View style={styles.container}>
       <Text>Use memo - CRO102 - MD19301</Text>

@@ -5,23 +5,25 @@ import { useEffect, useRef, useState } from 'react';
 export default function HomeScreen() {
   // render lại cả function
   console.log('render lại cả function')
-  const [count, setCount] = useState(20);
+  const [count, setCount] = useState(0);
 
   const [inforUser, setInforUser] = useState({
-    name: 'Le Tuan Anh',
+    name: 'Ne ne',
     age: 25,
   });
 
 
   const handleIncrease = () => {
-    setCount(count + 5);
+    setCount(count + 1);
   };
-
+  const handleDecrease = () => {
+    setCount(count - 1);
+  };
   const updateInforUser = () => {
     setInforUser({
       ...inforUser,
       age: 21,
-      name: 'Phu Le'
+      name: 'Kinn'
     });
   };
 
@@ -31,7 +33,7 @@ export default function HomeScreen() {
 
   useEffect(() => {
     console.log('useEffect chỉ chạy lần đầu tiên khi component render');
-  }, []); // giong voi onStart, onCreate trong Android
+  }, []); 
 
   // useEffect(() => {
   //   console.log('useEffect khởi chạy khi bien thay đổi giá trị');
@@ -41,7 +43,7 @@ export default function HomeScreen() {
 
   useEffect(() => {
     prevCount.current = count;
-    
+
   }, [count]);
 
   // console.log(
@@ -51,12 +53,9 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-        <Text style={styles.textCount}>{count}</Text>
         <Button title="Tăng" onPress={handleIncrease} />
-
-        <Text style={styles.textCount}>{inforUser.name} - {inforUser.age}</Text>
-
-        <Button title='Update Info User' onPress={updateInforUser} />
+        <Text style={styles.textCount}>{count}</Text>
+        <Button title='Giảm' onPress={handleDecrease} />
       </View>
     </SafeAreaView>
   );
