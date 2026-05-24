@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import {
-
-    View,
-    Text,
-    FlatList,
-    TouchableOpacity,
-    Modal,
-    TextInput,
-    StyleSheet,
-    Platform,
-    Alert,
-    Image,
-    ActivityIndicator,
-    Button,
-} from 'react-native';
-import { api } from '../../../../scripts/api';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useFocusEffect } from '@react-navigation/native';
 import { router } from 'expo-router';
+import React, { useCallback, useState } from 'react';
+import {
+    ActivityIndicator,
+    Alert,
+    FlatList,
+    Image,
+    Modal,
+    Platform,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { api } from '../../../../scripts/api';
 
 type User = {
     id: string;
@@ -211,6 +210,7 @@ const HomeScreen = () => {
 
     const fetchUsers = async () => {
         try {
+            setLoading(true)
             const response = await api.get('/user');
             //console.log(response)
             // Giả sử response trả về mảng người dùng
@@ -220,11 +220,17 @@ const HomeScreen = () => {
         } catch (error) {
             console.error('Fetch users error:', error);
         }
+        finally {
+            setLoading(false)
+        }
     };
+    useFocusEffect(
+        useCallback(() => {
 
-    useEffect(() => {
-        fetchUsers();
-    }, []);
+            fetchUsers();
+
+        }, [])
+    );
 
     const handleUpdateUser = (updatedUser: User) => {
         setUserList((prev) =>
@@ -466,3 +472,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
+
+function useForcusEffect(arg0: () => void, arg1: never[]) {
+    throw new Error('Function not implemented.');
+}
